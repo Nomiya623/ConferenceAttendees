@@ -1,0 +1,76 @@
+
+services:
+  conferenceattendees.api:
+    image: ${DOCKER_REGISTRY-}conferenceattendeesapi
+    build:
+      context: .
+      dockerfile: ConferenceAttendees.Api/Dockerfile
+    ports:
+      - "7106:7106"      
+    depends_on: [mssql, seq_logs]
+    networks:
+      - app-network
+  conferenceattendees.mvc:
+    image: ${DOCKER_REGISTRY-}conferenceattendeesmvc
+    build:
+      context: .
+      dockerfile: ConferenceAttendees.MVC/Dockerfile
+    ports:
+      - "7230:7230"
+    depends_on:
+      - conferenceattendees.api
+    networks:
+      - app-network
+  mssql:
+    image: "trevoirwilliams/conferenceattendeedb"
+    container_name: sql2
+    hostname: mssql
+    environment: 
+      - MSSQL_SA_PASSWORD=P@ssword1
+      - ACCEPT_EULA=Y
+      - MSSQL_DATA_DIR=/var/opt/sqlserver/data
+      - MSSQL_LOG_DIR=/var/opt/sqlserver/log
+      - MSSQL_BACKUP_DIR=/var/opt/sqlserver/backup
+    restart: unless-stopped
+    ports:
+      - "1401:1433" 
+    volumes: 
+          - sqlsystem:/var/opt/mssql/
+          - sqldata:/var/opt/sqlserver/data
+          - sqllog:/var/opt/sqlserver/log
+          - sqlbackup:/var/opt/sqlserver/backup
+    networks:
+      - app-network
+  seq_logs:
+    image: datalust/seq
+    restart: unless-stopped
+    ports:
+      - "5342:80"
+    environment:
+      - ACCEPT_EULA=Y
+    networks:
+      - app-network
+  nginx:
+    build:
+      context: . 
+      dockerfile: nginx/Dockerfile
+    ports:
+      - "44391:44391"
+    depends_on:
+      - conferenceattendees.mvc
+    networks:
+      app-network:
+        aliases:
+          - "conferenceattendees.com"
+          - "api.conferenceattendees.com"
+    restart: always
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  sqlsystem:
+  sqldata:
+  sqllog:
+  sqlbackup:
