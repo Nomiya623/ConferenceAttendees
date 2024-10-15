@@ -39,12 +39,20 @@ docker run -d -p 8081:80 conferenceattendeesapi:latest
 ## 🔗 API와 데이터베이스 연결
 Docker 내부 네트워크를 사용하여 컨테이너 간 통신을 설정. localhost 대신 host.docker.internal을 사용하여 API에서 데이터베이스에 연결.
 
-appsettings.json 파일에서 연결 문자열을 다음과 같이 설정합니다:
+appsettings.Development.json 파일에서 연결 문자열을 다음과 같이 설정합니다:
 ```bash
 "ConnectionStrings": {
   "ConferenceAttendeeDatabaseConnection": "Server=host.docker.internal,1400;Database=ConferenceAttendeeDb;Trusted_Connection=false;MultipleActiveResultSets=true;Encrypt=false;user id=sa;password=Str0ngPa$$w0rd;"
 }
 ```
+appsettings.json (Docker)
+```bash
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=friendly_turing,1433;Database=ConferenceAttendeeDb;User Id=sa;Password=Str0ngPa$$w0rd;"
+  },
+```
+
 ### 📂 EF Core 데이터베이스 마이그레이션
 데이터베이스 마이그레이션을 적용하여 스키마를 최신 상태로 유지합니다. Visual Studio의 NuGet 패키지 관리자 또는 .NET CLI를 사용하여 마이그레이션을 추가하고 데이터베이스를 업데이트 필요.
 
