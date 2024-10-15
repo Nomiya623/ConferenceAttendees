@@ -5,36 +5,6 @@ VisualStudioVersion = 17.10.34607.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferenceAttendees.Api", "ConferenceAttendees.Api\ConferenceAttendees.Api.csproj", "{77CC596B-4B11-457F-AE1F-B146AC120193}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConferenceAttendees.MVC", "ConferenceAttendees.MVC\ConferenceAttendees.MVC.csproj", "{F3F5C619-0FC5-410C-855E-CF88C7826B6B}"
-EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{862C6144-4B01-4125-80F0-570AF683931D}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{6B8D29AB-310F-40C4-AEF2-BCDCD82C7521}"
-	ProjectSection(SolutionItems) = preProject
-		nginx\api-cert.conf = nginx\api-cert.conf
-		nginx\api-cert.crt = nginx\api-cert.crt
-		nginx\api-cert.key = nginx\api-cert.key
-		nginx\api-cert.pfx = nginx\api-cert.pfx
-		nginx\Dockerfile = nginx\Dockerfile
-		nginx\mvc-cert.conf = nginx\mvc-cert.conf
-		nginx\mvc-cert.crt = nginx\mvc-cert.crt
-		nginx\mvc-cert.key = nginx\mvc-cert.key
-		nginx\mvc-cert.pfx = nginx\mvc-cert.pfx
-		nginx\nginx.conf = nginx\nginx.conf
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{C6F915E1-D118-4771-9E21-D62B9113C5EF}"
-	ProjectSection(SolutionItems) = preProject
-		k8s\admin-user-cluster-role.yml = k8s\admin-user-cluster-role.yml
-		k8s\admin-user.yml = k8s\admin-user.yml
-		k8s\api-deployment.yaml = k8s\api-deployment.yaml
-		k8s\mssql-deployment.yaml = k8s\mssql-deployment.yaml
-		k8s\mvc-client-deployment.yaml = k8s\mvc-client-deployment.yaml
-		k8s\namespace.yml = k8s\namespace.yml
-		k8s\persistence-volumes.yml = k8s\persistence-volumes.yml
-		k8s\seq-deployment.yaml = k8s\seq-deployment.yaml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,14 +15,6 @@ Global
 		{77CC596B-4B11-457F-AE1F-B146AC120193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77CC596B-4B11-457F-AE1F-B146AC120193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77CC596B-4B11-457F-AE1F-B146AC120193}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F3F5C619-0FC5-410C-855E-CF88C7826B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F3F5C619-0FC5-410C-855E-CF88C7826B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F3F5C619-0FC5-410C-855E-CF88C7826B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F3F5C619-0FC5-410C-855E-CF88C7826B6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{862C6144-4B01-4125-80F0-570AF683931D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{862C6144-4B01-4125-80F0-570AF683931D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{862C6144-4B01-4125-80F0-570AF683931D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{862C6144-4B01-4125-80F0-570AF683931D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
